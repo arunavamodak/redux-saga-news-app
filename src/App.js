@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import SearchBar from "./components/SearchBar";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as types from "./redux/actionTypes";
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  const [search, setSearch] = useState("");
+
+  const handleSearch = () => {
+    dispatch({ type: types.FETCH_NEWS_START, payload: search });
+
+    setSearch("");
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>News App</h1>
+      <SearchBar search={search} setSearch={setSearch} handleSearch={handleSearch} />
     </div>
   );
 }
