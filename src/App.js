@@ -1,4 +1,3 @@
-import './App.css';
 import SearchBar from "./components/SearchBar";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -34,19 +33,18 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Redux Saga News App</h1>
+    <div>
+      <h1 style={{ textAlign: "center" }}>Redux Saga News App</h1>
 
       <SearchBar handleSearch={handleSearch} />
 
       <NewsList query={query} data={state} />
 
       <>
-        <Backdrop open={state.loading}>
+        <Backdrop open={state.loading} style={{ zIndex: "9999" }}>
           <CircularProgress color="inherit" />
         </Backdrop>
       </>
-
 
       <>
         <Snackbar

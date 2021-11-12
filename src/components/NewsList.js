@@ -30,7 +30,7 @@ const NewsList = ({ query, data }) => {
         <div className={classes.newsListContainer}>
             <div>
                 {
-                    query.length ?
+                    query.length && data.news.totalResults ?
                         (
                             <p className={classes.searched}>Showing <b>{data.news.totalResults}</b> results for "<b>{query}</b>"</p>
                         ) : null

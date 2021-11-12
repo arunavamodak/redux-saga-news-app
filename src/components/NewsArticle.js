@@ -1,6 +1,8 @@
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import ArticleImage from "./ArticleImage";
 
 const useStyles = makeStyles((theme) => ({
     articleContainer: {
@@ -9,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         height: 'auto'
     },
     imageContainer: {
-        height: "186px"
+        height: "186px",
     },
     articleImage: {
         height: '100%',
@@ -39,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '16px',
         fontFamily: "'Lato', sans-serif",
         color: theme.palette.text.secondary,
+    },
+    link: {
+        textDecoration: "none",       
     }
 }));
 
@@ -53,13 +58,11 @@ const NewsArticle = ({ article }) => {
 
     return (
         <Grid className={classes.articleContainer} container>
-
             <Grid item xs={12} sm={4}>
                 <div className={classes.imageContainer}>
-                    <img src={article["urlToImage"]} className={classes.articleImage} />
+                    <ArticleImage imageUrl={article["urlToImage"]} className={classes.articleImage} />
                 </div>
             </Grid>
-
             <Grid item xs={12} sm={8}>
                 <div class={classes.infoContainer}>
                     <Typography
@@ -67,7 +70,7 @@ const NewsArticle = ({ article }) => {
                         gutterBottom
                         className={classes.title}
                     >
-                        <a href={article.url}>{article.title}</a>
+                        <a className={classes.link} href={article.url}>{article.title}</a>
                     </Typography>
                     <p className={classes.author}>By {article.author} from "{article.source.name}"</p>
                     <Typography
