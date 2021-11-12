@@ -20,8 +20,12 @@ const NewsList = ({ query, data }) => {
 
     const classes = useStyles();
 
+    const generateKey = () => {
+        return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+    }
+
     const articles = data.news.articles ? data.news.articles.map(item =>
-        <Grid item xs={12}>
+        <Grid item xs={12} key={generateKey()}>
             <NewsArticle key={item.url} article={item} />
         </Grid>
     ) : [];

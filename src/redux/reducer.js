@@ -3,7 +3,8 @@ import * as types from "./actionTypes";
 const initialState = {
     news: {},
     error: null,
-    loading: false
+    loading: false,
+    page: 1
 };
 
 const newsReducer = (state = initialState, action) => {
@@ -19,6 +20,7 @@ const newsReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: null,
+                page: state.page + 1,
                 news: action.payload
             }
         case types.FETCH_NEWS_FAIL:

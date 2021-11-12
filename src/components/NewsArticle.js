@@ -64,7 +64,7 @@ const NewsArticle = ({ article }) => {
                 </div>
             </Grid>
             <Grid item xs={12} sm={8}>
-                <div class={classes.infoContainer}>
+                <div className={classes.infoContainer}>
                     <Typography
                         noWrap
                         gutterBottom

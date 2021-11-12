@@ -24,7 +24,7 @@ function App() {
   const handleSearch = (search) => {
     if (search.length) {
       setQuery(search);
-      dispatch({ type: types.FETCH_NEWS_START, payload: search });
+      dispatch({ type: types.FETCH_NEWS_START, payload: { search: search, page: state.page } });
     }
     else {
       setAlert(true);
